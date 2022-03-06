@@ -1,0 +1,26 @@
+/*Creating table for sales associate's information*/
+CREATE TABLE Employee (
+	id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    employee_ID VARCHAR(10),
+    first_name VARCHAR(20),
+    last_name VARCHAR(30),
+    hired_since DATE
+)
+
+/*Creating table for sales associate's monthly sales target
+CREATE TABLE Sales_Target(
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    employee_id INT(6),
+    January FLOAT,
+    February FLOAT,
+    March FLOAT,
+    April FLOAT,
+    May FLOAT,
+    June FLOAT,
+    July FLOAT,
+    August FLOAT,
+    September FLOAT,
+    October FLOAT,
+    November FLOAT,
+    December FLOAT
+)
