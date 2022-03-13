@@ -31,14 +31,14 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="myForm">
+                    <form id="myForm" method="POST">
                         <div class="mb-3">
                             <label for="first-name" class="col-form-label">First Name:</label>
                             <input type="text" class="form-control" id="first-name" name="first-name">
                         </div>
                         <div class="mb-3">
                             <label for="last-name" class="col-form-label">Last Name:</label>
-                            <input type="text" class="form-control" id="last-name" name>
+                            <input type="text" class="form-control" id="last-name" name="last-name">
                         </div>
                         <div class="mb-3">
                             <label for="hired-since" class="col-form-label">Hired Since:</label>
@@ -50,11 +50,11 @@
 
                         </div>
                     </form>
-                    <p><tt id="results"></tt></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button id="saveForm" type="button" class="btn btn-primary">Create Performance</button>
+                    <button type="submit" form="myForm" class="btn btn-outline-success">Cadastrar</button>
+                    <!--<button id="saveForm" type="button" class="btn btn-primary">Create Performance</button>-->
                 </div>
             </div>
         </div>
@@ -152,16 +152,12 @@
                 $(this).css('z-index', zIndex);
                 setTimeout(() => $('.modal-backdrop').not('.modal-stack').css('z-index', zIndex - 1).addClass('modal-stack'));
             });
-            function showValues() {
-                //var str = $("#myForm").serialize();
-                //console.log($("#myForm").serialize());
+            
+            $( "#saveSalesGoals" ).on( "click", function(){
                 $('#salesGoalsModal').modal('hide')
-            }
-            $( "#saveSalesGoals" ).on( "click", showValues );
-            /*$("#saveSalesGoals").on('click', function(){
-                var salesGoals = $("#")
-            })*/
-            $("#saveForm").on('click', function(){
+            });
+
+            $("#myForm").on("submit", function(){
                 event.preventDefault();
                 $("#myForm").serialize();
                 console.log($("#myForm").serialize());
