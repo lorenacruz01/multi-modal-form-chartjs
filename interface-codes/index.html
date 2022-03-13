@@ -34,15 +34,15 @@
                     <form id="myForm">
                         <div class="mb-3">
                             <label for="first-name" class="col-form-label">First Name:</label>
-                            <input type="text" class="form-control" id="first-name">
+                            <input type="text" class="form-control" id="first-name" name="first-name">
                         </div>
                         <div class="mb-3">
                             <label for="last-name" class="col-form-label">Last Name:</label>
-                            <input type="text" class="form-control" id="last-name">
+                            <input type="text" class="form-control" id="last-name" name>
                         </div>
                         <div class="mb-3">
                             <label for="hired-since" class="col-form-label">Hired Since:</label>
-                            <input type="date" class="form-control" id="hired-since">
+                            <input type="date" class="form-control" id="hired-since" name="hired-since">
                         </div>
                         <div class="mb-3">
                             <label for="addSalesGoals" class="col-form-label">Add Monthly Sales Goals:</label>
@@ -50,10 +50,11 @@
 
                         </div>
                     </form>
+                    <p><tt id="results"></tt></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" form="myForm" class="btn btn-primary">Create Performance</button>
+                    <button id="saveForm" type="button" class="btn btn-primary">Create Performance</button>
                 </div>
             </div>
         </div>
@@ -62,82 +63,85 @@
     <!--Sales Target Modal-->
     <div id="salesGoalsModal"class="modal" tabindex="-1">
         <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Sales Goals</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <p>Enter sales goals for the following months.</p>
-                <div class="first-row">
-                    <div class="row">
-                        <div class="col">
-                            <label for="january" class="col-form-label">January</label>
-                            <input form="myForm" type="text" class="form-control" id="january">
-                        </div>
-                        <div class="col">
-                            <label for="february" class="col-form-label">February</label>
-                            <input form="myForm" type="text" class="form-control" id="february">
-                        </div>
-                        <div class="col">
-                            <label for="march" class="col-form-label">March</label>
-                            <input form="myForm" type="text" class="form-control" id="march">
-                        </div>
-                        <div class="col">
-                            <label for="april" class="col-form-label">April</label>
-                            <input form="myForm" type="text" class="form-control" id="april">
-                        </div>
-                    </div>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Sales Goals</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="second-row">
-                    <div class="row">
-                        <div class="col">
-                            <label for="may" class="col-form-label">May</label>
-                            <input form="myForm" type="text" class="form-control" id="may">
+                <div class="modal-body">
+                    <p>Enter sales goals for the following months.</p>
+                    <!--<form id="salesGoalsForm">-->
+                        <div class="first-row">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="january" class="col-form-label">January</label>
+                                    <input form="myForm" type="text" class="form-control" id="january" name="january">
+                                </div>
+                                <div class="col">
+                                    <label for="february" class="col-form-label">February</label>
+                                    <input form="myForm" type="text" class="form-control" id="february" name="february">
+                                </div>
+                                <div class="col">
+                                    <label for="march" class="col-form-label">March</label>
+                                    <input form="myForm" type="text" class="form-control" id="march" name="march">
+                                </div>
+                                <div class="col">
+                                    <label for="april" class="col-form-label">April</label>
+                                    <input form="myForm" class="form-control" id="april" name="april">
+                                </div>
+                            </div>
                         </div>
-                        <div class="col">
-                            <label for="june" class="col-form-label">June</label>
-                            <input form="myForm" type="text" class="form-control" id="june">
+                        <div class="second-row">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="may" class="col-form-label">May</label>
+                                    <input form="myForm" type="text" class="form-control" id="may" name="may">
+                                </div>
+                                <div class="col">
+                                    <label for="june" class="col-form-label">June</label>
+                                    <input form="myForm" type="text" class="form-control" id="june" name="june">
+                                </div>
+                                <div class="col">
+                                    <label for="july" class="col-form-label">July</label>
+                                    <input form="myForm" type="text" class="form-control" id="july" name="july">
+                                </div>
+                                <div class="col">
+                                    <label for="august" class="col-form-label">August</label>
+                                    <input form="myForm" type="text" class="form-control" id="august" name="august">
+                                </div>
+                            </div>
                         </div>
-                        <div class="col">
-                            <label for="july" class="col-form-label">July</label>
-                            <input form="myForm" type="text" class="form-control" id="july">
+                        <div class="third-row">
+                            <div class="row">
+                                
+                                <div class="col">
+                                    <label for="september" class="col-form-label">September</label>
+                                    <input form="myForm" type="text" class="form-control" id="september" name="september">
+                                </div>
+                                <div class="col">
+                                    <label for="october" class="col-form-label">October</label>
+                                    <input form="myForm" type="text" class="form-control" id="october" name="october">
+                                </div>
+                                <div class="col">
+                                    <label for="november" class="col-form-label">November</label>
+                                    <input form="myForm" type="text" class="form-control" id="november" name="november">
+                                </div>
+                                <div class="col">
+                                    <label for="december" class="col-form-label">December</label>
+                                    <input form="myForm" type="text" class="form-control" id="december" name="december">
+                                </div>
+                            </div>
                         </div>
-                        <div class="col">
-                            <label for="august" class="col-form-label">August</label>
-                            <input form="myForm" type="text" class="form-control" id="august">
-                        </div>
-                    </div>
+                   <!--</form>-->
+                    
                 </div>
-                <div class="third-row">
-                    <div class="row">
-                        
-                        <div class="col">
-                            <label for="september" class="col-form-label">September</label>
-                            <input form="myForm" type="text" class="form-control" id="september">
-                        </div>
-                        <div class="col">
-                            <label for="october" class="col-form-label">October</label>
-                            <input form="myForm" type="text" class="form-control" id="october">
-                        </div>
-                        <div class="col">
-                            <label for="november" class="col-form-label">November</label>
-                            <input form="myForm" type="text" class="form-control" id="november">
-                        </div>
-                        <div class="col">
-                            <label for="december" class="col-form-label">December</label>
-                            <input form="myForm" type="text" class="form-control" id="december">
-                        </div>
-                    </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button id="saveSalesGoals" type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
         </div>
-      </div>
+    </div>
     <script>
         $(document).ready(function(){
             $('#addSalesGoals').click(function(){
@@ -148,8 +152,23 @@
                 $(this).css('z-index', zIndex);
                 setTimeout(() => $('.modal-backdrop').not('.modal-stack').css('z-index', zIndex - 1).addClass('modal-stack'));
             });
+            function showValues() {
+                //var str = $("#myForm").serialize();
+                //console.log($("#myForm").serialize());
+                $('#salesGoalsModal').modal('hide')
+            }
+            $( "#saveSalesGoals" ).on( "click", showValues );
+            /*$("#saveSalesGoals").on('click', function(){
+                var salesGoals = $("#")
+            })*/
+            $("#saveForm").on('click', function(){
+                event.preventDefault();
+                $("#myForm").serialize();
+                console.log($("#myForm").serialize());
+            });
         });
+        
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>  
 </body>
-</html>
+</html> 
