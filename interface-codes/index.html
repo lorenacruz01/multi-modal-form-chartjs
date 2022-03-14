@@ -136,7 +136,7 @@
                     
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button id="cancelSalesGoals" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button id="saveSalesGoals" type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
@@ -147,22 +147,43 @@
             $('#addSalesGoals').click(function(){
                 $('#salesGoalsModal').modal('show')
             });
+
             $(document).on('show.bs.modal', '.modal', function() {
                 const zIndex = 1040 + 10 * $('.modal:visible').length;
                 $(this).css('z-index', zIndex);
                 setTimeout(() => $('.modal-backdrop').not('.modal-stack').css('z-index', zIndex - 1).addClass('modal-stack'));
             });
-            
-            $( "#saveSalesGoals" ).on( "click", function(){
+
+            $("#saveSalesGoals").on( "click", function(){
                 $('#salesGoalsModal').modal('hide')
             });
 
+            $("#cancelSalesGoals").on( "click", function(){
+                console.log("cancelou");
+                document.getElementById("january").value = null;
+                document.getElementById("february").value = null;
+                document.getElementById("march").value = null;
+                document.getElementById("april").value = null;
+                document.getElementById("may").value = null;
+                document.getElementById("june").value = null;
+                document.getElementById("july").value = null;
+                document.getElementById("august").value = null;
+                document.getElementById("september").value = null;
+                document.getElementById("october").value = null;
+                document.getElementById("november").value = null;
+                document.getElementById("december").value = null;
+            });
+                
             $("#myForm").on("submit", function(){
                 event.preventDefault();
                 $("#myForm").serialize();
                 console.log($("#myForm").serialize());
             });
         });
+        
+        
+            
+        
         
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>  
