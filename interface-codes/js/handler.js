@@ -1,7 +1,25 @@
 $(document).ready(function(){
-   
+    var currentValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+    function saveValues(){
+        var keys = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+        for(var i = 0; i < keys.length; i++){
+            currentValues[i] = document.getElementById(keys[i]).value;
+            console.log("valor: " + currentValues[i]);
+        }
+    }
+
+    function RestoreModal(){
+        var keys = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+        for(var i = 0; i < keys.length; i++){
+            document.getElementById(keys[i]).value = currentValues[i]; 
+        } 
+    }
+
+
     $('#addSalesGoals').click(function(){
-        $('#salesGoalsModal').modal('show')
+        RestoreModal();
+        $('#salesGoalsModal').modal('show');
     });
 
     $(document).on('show.bs.modal', '.modal', function() {
@@ -9,6 +27,13 @@ $(document).ready(function(){
         $(this).css('z-index', zIndex);
         setTimeout(() => $('.modal-backdrop').not('.modal-stack').css('z-index', zIndex - 1).addClass('modal-stack'));
     });
+
+    
+    function CleanErrorMsg(){
+        $('#error-msg').html('');
+        $('input').removeClass('error');
+    }
+
     function ValidateSalesGoals(){
         var months = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
         var values = [];
@@ -31,25 +56,15 @@ $(document).ready(function(){
 
     $("#saveSalesGoals").on( "click", function(){
         var validate = ValidateSalesGoals();
+        
         if(validate){
+            saveValues();
             $('#salesGoalsModal').modal('hide')
-        } 
+        }
     });
 
-    $("#cancelSalesGoals").on( "click", function(){
-        console.log("cancelou");
-        document.getElementById("january").value = null;
-        document.getElementById("february").value = null;
-        document.getElementById("march").value = null;
-        document.getElementById("april").value = null;
-        document.getElementById("may").value = null;
-        document.getElementById("june").value = null;
-        document.getElementById("july").value = null;
-        document.getElementById("august").value = null;
-        document.getElementById("september").value = null;
-        document.getElementById("october").value = null;
-        document.getElementById("november").value = null;
-        document.getElementById("december").value = null;
+    $("#salesGoalsModal").on('hidden.bs.modal', function(e) {
+        CleanErrorMsg();
     });
         
     $("#myForm").on("submit", function(){
