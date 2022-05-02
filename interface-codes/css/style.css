@@ -1,8 +1,25 @@
-#addNewPerformance{
-    position: relative;
-    float: right;
+* {
+    margin: 0;
+    padding: 0;
 }
 
+body {
+    background-color: #E8F9FD;
+}
 .error {
     border-color: red;
+}
+
+.nav {
+    position: relative;
+}
+.addbutton {
+    position: absolute;
+    padding-right: 15px;
+    right: 0;
+}
+
+.selector {
+    width: 800px;
+    margin: 20px auto;
 }
